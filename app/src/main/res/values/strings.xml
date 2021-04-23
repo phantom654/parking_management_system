@@ -1,11 +1,3 @@
 <resources>
     <string name="app_name">Parking Management</string>
-    <string name="password">Password</string>
-    <string name="username">Username</string>
-    <string name="login">Login</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="full_name">Full Name</string>
-    <string name="email">email</string>
-    <string name="login_here">Login Here</string>
-    <string name="sign_up_here">Sign Up Here</string>
 </resources>
