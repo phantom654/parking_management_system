@@ -12,6 +12,9 @@
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserProfile" />
+        <activity android:name=".ActiveBookings" />
+        <activity android:name=".PastBookings" />
+        <activity android:name=".EditProfile" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
