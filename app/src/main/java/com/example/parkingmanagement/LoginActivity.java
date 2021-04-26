@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
-
         if(sharedPreferences.getBoolean("loggedIn", false)){
             String userId = sharedPreferences.getString("userId", "null");
             Intent intentHome = new Intent(getApplicationContext(), HomeActivity.class);
@@ -44,11 +43,11 @@ public class LoginActivity extends AppCompatActivity {
         else
         {
             etEmail=findViewById(R.id.etEmail);
-            etPassword=findViewById(R.id.etPassword);
+            etPassword=findViewById(R.id.etCurrPass);
 
-            btnLogin=findViewById(R.id.btnPastBookings);
+            btnLogin=findViewById(R.id.btnUpdate);
 
-            progressBarLogin=findViewById(R.id.progressBarLogin);
+            progressBarLogin=findViewById(R.id.progressBarUpdate);
 
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override

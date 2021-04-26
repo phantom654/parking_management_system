@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UserProfile extends AppCompatActivity {
+
     Button btnActiveBookings, btnPastBookings, btnEditProfile;
 
     String userId;
@@ -20,11 +21,10 @@ public class UserProfile extends AppCompatActivity {
             userId = getIntent().getStringExtra("userId");
         }
 
-
         setContentView(R.layout.activity_userprofile);
 
         btnActiveBookings = findViewById(R.id.btnActiveBookings);
-        btnPastBookings = findViewById(R.id.btnPastBookings);
+        btnPastBookings = findViewById(R.id.btnUpdate);
         btnEditProfile = findViewById(R.id.btnEditProfile);
 
         btnActiveBookings.setOnClickListener(new View.OnClickListener() {
