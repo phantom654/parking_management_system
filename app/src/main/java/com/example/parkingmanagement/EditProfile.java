@@ -1,18 +1,27 @@
 package com.example.parkingmanagement;
 
+import android.content.AsyncQueryHandler;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class EditProfile extends AppCompatActivity {
@@ -24,11 +33,9 @@ public class EditProfile extends AppCompatActivity {
 
     ProgressBar progressBarUpdate;
 
-//    SharedPreferences sharedPreferences;
-
     String userId;
 
-    String name, email, address, contactNum, currPass, vehicleId;
+    String name, email, address, contactNum, currPass, vehicleId, password;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,34 +57,192 @@ public class EditProfile extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btnUpdate);
 
         tvUserId = findViewById(R.id.tvUserId);
-
         tvUserId.setText(String.format("User ID : %s", userId));
-        etName.setText(userId);
 
         progressBarUpdate = findViewById(R.id.progressBarUpdate);
 
-        try {
+        new GetAsync().execute();
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking","admin","rajurand");
-            Statement statementSetVal = connection.createStatement();
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
 
-            String queryUserExists = String.format("select * from users WHERE userId='%s'", userId);
-            ResultSet resultSet = statementSetVal.executeQuery(queryUserExists);
-
-//            etName.setText(resultSet.getString(2));
-
-            etEmail.setText(resultSet.getString(7));
-            etAddress.setText(resultSet.getString(5));
-            etContactNum.setText(resultSet.getString(4));
-            etVehicleId.setText(resultSet.getString(6));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+            @Override
+            public void onClick(View v) {
+                new SetAsync().execute();
+            }
+        });
 
     }
 
+    class GetAsync extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressBarUpdate.setVisibility(View.VISIBLE);
+        }
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            Connection connection = null;
+            Statement statementGetVal = null;
+            ResultSet resultSetGetVal = null;
+
+            try {
+
+                Class.forName("com.mysql.jdbc.Driver");
+                connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false","admin","rajurand");
+                statementGetVal = connection.createStatement();
+
+                String queryGetVal = String.format("select * from users WHERE userId = '%s';", userId);
+                resultSetGetVal = statementGetVal.executeQuery(queryGetVal);
+
+                while(resultSetGetVal.next()) {
+                    name = resultSetGetVal.getString("name");
+                    email = resultSetGetVal.getString("email");
+                    address = resultSetGetVal.getString("address");
+                    contactNum = resultSetGetVal.getString("contactNumber");
+                    vehicleId = resultSetGetVal.getString("vehicleId");
+                    password = resultSetGetVal.getString(3);
+                }
+
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        // Stuff that updates the UI
+                        etName.setText(name);
+                        etEmail.setText(email);
+                        etAddress.setText(address);
+                        etContactNum.setText(contactNum);
+                        etVehicleId.setText(vehicleId);
+                    }
+                });
+
+
+                try {
+
+                    resultSetGetVal.close();
+                    statementGetVal.close();
+                    connection.close();
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+
+            } catch (Exception e) {
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast toastPasswordIncorrect = Toast.makeText(getApplicationContext(), "GetAsync Exception!", Toast.LENGTH_SHORT);
+                        toastPasswordIncorrect.show();
+                    }
+                });
+
+
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressBarUpdate.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    class SetAsync extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressBarUpdate.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            name = etName.getText().toString();
+            email = etEmail.getText().toString();
+            address = etAddress.getText().toString();
+            contactNum = etContactNum.getText().toString();
+            vehicleId = etVehicleId.getText().toString();
+            currPass = etCurrPass.getText().toString();
+
+            if(!currPass.equals(password)) {
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast toastPasswordIncorrect = Toast.makeText(getApplicationContext(), "Incorrect Password!", Toast.LENGTH_SHORT);
+                        toastPasswordIncorrect.show();
+                    }
+                });
+
+            } else {
+
+                Connection connection1 = null;
+                Statement statementSetVal = null;
+                int resultSetVal;
+
+                try {
+
+                    connection1 = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking","admin","rajurand");
+                    statementSetVal = connection1.createStatement();
+                    String querySetVal = String.format("UPDATE users " +
+                                    "set name = '%s', contactNumber = '%s', address = '%s', vehicleId = '%s', email = '%s' " +
+                                    "WHERE userId = '%s';",
+                            name, contactNum, address, vehicleId, email, userId);
+
+                    resultSetVal = statementSetVal.executeUpdate(querySetVal);
+
+                    if(resultSetVal == 1) {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast toastSuccess = Toast.makeText(getApplicationContext(), "Successfully Updated!", Toast.LENGTH_SHORT);
+                                toastSuccess.show();
+
+                                etCurrPass.setText(null);
+                            }
+                        });
+                    }
+
+                    try {
+                        statementSetVal.close();
+
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast toastPasswordIncorrect = Toast.makeText(getApplicationContext(), "SetAsync Exception!", Toast.LENGTH_SHORT);
+                            toastPasswordIncorrect.show();
+                        }
+                    });
+                }
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressBarUpdate.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }
+
+

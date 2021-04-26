@@ -77,14 +77,19 @@ public class LoginActivity extends AppCompatActivity {
 
             String email = strings[0], password = strings[1];
 
+            Connection connection = null;
+            Statement statementLogin = null;
+            ResultSet resultSetUserExists = null;
+
             try
             {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking","admin","rajurand");
-                Statement statementLogin = connection.createStatement();
+
+                connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking","admin","rajurand");
+                statementLogin = connection.createStatement();
 
                 String queryUserExists = String.format("select * from users WHERE email='%s'",email);
-                ResultSet resultSetUserExists = statementLogin.executeQuery(queryUserExists);
+                resultSetUserExists = statementLogin.executeQuery(queryUserExists);
 
                 if(resultSetUserExists.next()==false)
                 {
@@ -105,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                Toast tostPasswordIncorrect = Toast.makeText(getApplicationContext(), "Incorrect Password!", Toast.LENGTH_SHORT);
-                                tostPasswordIncorrect.show();
+                                Toast toastPasswordIncorrect = Toast.makeText(getApplicationContext(), "Incorrect Password!", Toast.LENGTH_SHORT);
+                                toastPasswordIncorrect.show();
                             }
                         });
                     }
@@ -120,8 +125,17 @@ public class LoginActivity extends AppCompatActivity {
                         });
 
                         String userId=resultSetUserExists.getString(1);
+
                         sharedPreferences.edit().putBoolean("loggedIn",true).apply();
                         sharedPreferences.edit().putString("userId",userId).apply();
+
+                        try {
+                            resultSetUserExists.close();
+                            statementLogin.close();
+                            connection.close();
+
+                        } catch (Exception e) {
+                }
 
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
 
@@ -130,9 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
 
-
             } catch (Exception e) {
                 e.printStackTrace();
+
             }
 
             return null;
