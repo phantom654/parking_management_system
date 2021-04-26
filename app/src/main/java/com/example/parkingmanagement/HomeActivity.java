@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,9 +23,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Button btnUserProfile = findViewById(R.id.btnUserProfile);
+
         String userId = getIntent().getStringExtra("userId");
 
 //        List<String> cities = (List<String>) new GetCities().execute();
+
+
+        btnUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentUserProfile = new Intent(getApplicationContext(), UserProfile.class);
+                intentUserProfile.putExtra("userId", userId);
+
+                startActivity(intentUserProfile);
+            }
+        });
 
 
     }
