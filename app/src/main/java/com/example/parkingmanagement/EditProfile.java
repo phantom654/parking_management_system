@@ -16,8 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.*;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,7 +25,7 @@ import java.sql.Statement;
 public class EditProfile extends AppCompatActivity {
 
     EditText etName, etEmail, etAddress, etContactNum, etCurrPass, etVehicleId;
-    Button btnUpdate;
+    Button btnUpdate, btnChangePass;
 
     TextView tvUserId;
 
@@ -55,11 +53,23 @@ public class EditProfile extends AppCompatActivity {
         etVehicleId = findViewById(R.id.etVehicleId);
 
         btnUpdate = findViewById(R.id.btnUpdate);
+        btnChangePass = findViewById(R.id.btnChangePass);
 
         tvUserId = findViewById(R.id.tvUserId);
         tvUserId.setText(String.format("User ID : %s", userId));
 
         progressBarUpdate = findViewById(R.id.progressBarUpdate);
+
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intentChangePass = new Intent(getApplicationContext(), UpdatePassword.class);
+                intentChangePass.putExtra("userId", userId);
+
+                startActivity(intentChangePass);
+            }
+        });
 
         new GetAsync().execute();
 
@@ -202,16 +212,24 @@ public class EditProfile extends AppCompatActivity {
 
                     resultSetVal = statementSetVal.executeUpdate(querySetVal);
 
-                    if(resultSetVal == 1) {
-                        runOnUiThread(new Runnable() {
-                            public void run() {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            if(resultSetVal == 0) {
+                                Toast toastFailure = Toast.makeText(getApplicationContext(), "Something Went Wrong! Please Try Again.", Toast.LENGTH_SHORT);
+                                toastFailure.show();
+                            } else {
                                 Toast toastSuccess = Toast.makeText(getApplicationContext(), "Successfully Updated!", Toast.LENGTH_SHORT);
                                 toastSuccess.show();
-
-                                etCurrPass.setText(null);
                             }
-                        });
-                    }
+                        }
+                    });
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            etCurrPass.setText(null);
+                        }
+                    });
 
                     try {
                         statementSetVal.close();

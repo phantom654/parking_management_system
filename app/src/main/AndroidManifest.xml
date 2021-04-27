@@ -20,6 +20,8 @@
                     android:label="@string/past_bookings"/>
         <activity android:name=".EditProfile"
                     android:label="@string/edit_profile"/>
+        <activity android:name=".UpdatePassword"
+                    android:label="Update Password" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
