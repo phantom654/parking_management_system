@@ -22,6 +22,8 @@
                     android:label="@string/edit_profile"/>
         <activity android:name=".UpdatePassword"
                     android:label="Update Password" />
+        <activity android:name=".Register"
+                    android:label="Register" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
