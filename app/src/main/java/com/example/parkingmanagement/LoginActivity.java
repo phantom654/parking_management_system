@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,19 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
-
-        if(sharedPreferences.getBoolean("loggedIn", false)){
-            String userId = sharedPreferences.getString("userId", "null");
-            Intent intentHome = new Intent(getApplicationContext(), HomeActivity.class);
-
-            intentHome.putExtra("userId", userId);
-            startActivity(intentHome);
-        }
-        else
-        {
             etEmail=findViewById(R.id.etEmail);
             etPassword=findViewById(R.id.etPassword);
 
@@ -62,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-        }
     }
 
     class Login extends AsyncTask<String,Void,Void>{
@@ -125,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                         sharedPreferences.edit().putBoolean("loggedIn",true).apply();
                         sharedPreferences.edit().putString("userId",userId).apply();
 
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), SelectCityActivity.class);
 
                         intent.putExtra("userId", userId);
                         startActivity(intent);

@@ -9,14 +9,26 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        if(sharedPreferences.getBoolean("loggedIn", false)){
+            String userId = sharedPreferences.getString("userId", "null");
+            Intent intentHome = new Intent(getApplicationContext(), SelectCityActivity.class);
+
+            intentHome.putExtra("userId", userId);
+            startActivity(intentHome);
+        }
+        else
+        {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
 
 
     }
