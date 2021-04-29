@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Parking Management</string>
+    <string name="app_name">Parking Management System</string>
+    <string name="user_profile">User Profile</string>
+    <string name="active_bookings">Active Bookings</string>
+    <string name="past_bookings">Past Bookings</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

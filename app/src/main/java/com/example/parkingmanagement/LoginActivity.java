@@ -20,7 +20,7 @@ import java.sql.Statement;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPassword;
-    Button btnLogin;
+    Button btnLogin, btnRegisterPage;
 
     ProgressBar progressBarLogin;
 
@@ -33,11 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
             etEmail=findViewById(R.id.etEmail);
-            etPassword=findViewById(R.id.etPassword);
+            etPassword=findViewById(R.id.etCurrPass);
 
-            btnLogin=findViewById(R.id.btnLogin);
+            btnLogin = findViewById(R.id.btnUpdate);
+            btnRegisterPage = findViewById(R.id.btnRegisterPage);
 
-            progressBarLogin=findViewById(R.id.progressBarLogin);
+            progressBarLogin = findViewById(R.id.progressBarUpdate);
 
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -50,9 +51,20 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
+            btnRegisterPage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intentRegisterPage = new Intent(getApplicationContext(), Register.class);
+
+                    startActivity(intentRegisterPage);
+                }
+            });
+
+
     }
 
-    class Login extends AsyncTask<String,Void,Void>{
+    class Login extends AsyncTask<String, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -66,17 +78,20 @@ public class LoginActivity extends AppCompatActivity {
 
             String email = strings[0], password = strings[1];
 
-            try
-            {
+            Connection connection = null;
+            Statement statementLogin = null;
+            ResultSet resultSetUserExists = null;
+
+            try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking","admin","rajurand");
-                Statement statementLogin = connection.createStatement();
 
-                String queryUserExists = String.format("select * from users WHERE email='%s'",email);
-                ResultSet resultSetUserExists = statementLogin.executeQuery(queryUserExists);
+                connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
+                statementLogin = connection.createStatement();
 
-                if(resultSetUserExists.next()==false)
-                {
+                String queryUserExists = String.format("select * from users WHERE email='%s'", email);
+                resultSetUserExists = statementLogin.executeQuery(queryUserExists);
+
+                if (resultSetUserExists.next() == false) {
                     runOnUiThread(new Runnable() {
                         public void run() {
                             Toast tostUserNotFound = Toast.makeText(getApplicationContext(), "User not found!", Toast.LENGTH_SHORT);
@@ -84,23 +99,18 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-                }
-                else
-                {
+                } else {
 //                    System.out.println(resultSetUserExists.getString((3)));
 //                    System.out.println(password);
-                    if(!resultSetUserExists.getString(3).equals(password))
-                    {
+                    if (!resultSetUserExists.getString(3).equals(password)) {
 
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                Toast tostPasswordIncorrect = Toast.makeText(getApplicationContext(), "Incorrect Password!", Toast.LENGTH_SHORT);
-                                tostPasswordIncorrect.show();
+                                Toast toastPasswordIncorrect = Toast.makeText(getApplicationContext(), "Incorrect Password!", Toast.LENGTH_SHORT);
+                                toastPasswordIncorrect.show();
                             }
                         });
-                    }
-                    else
-                    {
+                    } else {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 Toast tostUserFound = Toast.makeText(getApplicationContext(), "User found!", Toast.LENGTH_SHORT);
@@ -108,9 +118,18 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
 
-                        String userId=resultSetUserExists.getString(1);
-                        sharedPreferences.edit().putBoolean("loggedIn",true).apply();
-                        sharedPreferences.edit().putString("userId",userId).apply();
+                        String userId = resultSetUserExists.getString(1);
+
+                        sharedPreferences.edit().putBoolean("loggedIn", true).apply();
+                        sharedPreferences.edit().putString("userId", userId).apply();
+
+                        try {
+                            resultSetUserExists.close();
+                            statementLogin.close();
+                            connection.close();
+
+                        } catch (Exception e) {
+                        }
 
                         Intent intent = new Intent(getApplicationContext(), SelectCityActivity.class);
 
@@ -119,9 +138,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
 
-
             } catch (Exception e) {
                 e.printStackTrace();
+
             }
 
             return null;

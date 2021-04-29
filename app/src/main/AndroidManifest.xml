@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.parkingmanagement">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,18 @@
         <activity android:name=".SelectBuildingActivity" />
         <activity android:name=".SelectCityActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".UserProfile"
+                    android:label="@string/user_profile"/>
+        <activity android:name=".ActiveBookings"
+                    android:label="@string/active_bookings"/>
+        <activity android:name=".PastBookings"
+                    android:label="@string/past_bookings"/>
+        <activity android:name=".EditProfile"
+                    android:label="@string/edit_profile"/>
+        <activity android:name=".UpdatePassword"
+                    android:label="Update Password" />
+        <activity android:name=".Register"
+                    android:label="Register" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
