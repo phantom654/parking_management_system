@@ -1,6 +1,7 @@
 package com.example.parkingmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.gridlayout.widget.GridLayout;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,6 +32,7 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
     ProgressBar progressBarCheck;
     GridLayout grid;
     Button btnBook;
+    TextView tvHeading;
 
     GridLayout scrollGrid;
 
@@ -39,50 +42,52 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_check_availability);
 
         progressBarCheck = findViewById(R.id.progressBarCheck);
-        grid=findViewById(R.id.grid);
-        scrollGrid=findViewById(R.id.grid);
+        grid = findViewById(R.id.grid);
+        //scrollGrid = findViewById(R.id.grid);
         btnBook = findViewById(R.id.btnBook);
 
-         year = getIntent().getIntExtra("YEAR", 0);
-         month = getIntent().getIntExtra("MONTH", 0);
-         date = getIntent().getIntExtra("DATE", 0);
-         hour = getIntent().getIntExtra("hour", 0);
-         minute = getIntent().getIntExtra("minute", 0);
-         duration = getIntent().getIntExtra("duration", 0);
-        numberOfRows = getIntent().getIntExtra("numberOfRows",0);
-        numberOfColumns = getIntent().getIntExtra("numberOfColumns",0);
+        tvHeading = findViewById(R.id.tvHeading);
 
-         userId = getIntent().getStringExtra("userId");
-         parkingId = getIntent().getStringExtra("parkingId");
+        year = getIntent().getIntExtra("YEAR", 0);
+        month = getIntent().getIntExtra("MONTH", 0);
+        date = getIntent().getIntExtra("DATE", 0);
+        hour = getIntent().getIntExtra("hour", 0);
+        minute = getIntent().getIntExtra("minute", 0);
+        duration = getIntent().getIntExtra("duration", 0);
+        numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
+        numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
 
+        userId = getIntent().getStringExtra("userId");
+        parkingId = getIntent().getStringExtra("parkingId");
 
 
         new buildGrid().execute();
 
     }
 
-    class buildGrid extends AsyncTask<Void, Void, ArrayList <Pair<Long, Long>> >{
+    class buildGrid extends AsyncTask<Void, Void, ArrayList<Pair<Long, Long>>> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
             progressBarCheck.setVisibility(View.VISIBLE);
-            scrollGrid.setVisibility(View.GONE);
+            //scrollGrid.setVisibility(View.GONE);
+            grid.setVisibility(View.GONE);
             btnBook.setVisibility(View.GONE);
 
         }
 
         @Override
-        protected ArrayList <Pair<Long, Long>> doInBackground(Void... voids) {
+        protected ArrayList<Pair<Long, Long>> doInBackground(Void... voids) {
 
-            ArrayList <Pair<Long, Long>> reservations = new ArrayList<>();
+            ArrayList<Pair<Long, Long>> reservations = new ArrayList<>();
 
             Date startDate = new Date(year, month, date, hour, minute);
-            Date endDate = new Date(startDate.getTime()+duration*60*1000);
+            Date endDate = new Date(startDate.getTime() + duration * 60 * 1000);
 
-            Long selectedStartTime=startDate.getTime();
-            Long selectedEndTime=endDate.getTime();
+            Long selectedStartTime = startDate.getTime();
+            Long selectedEndTime = endDate.getTime();
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -92,16 +97,14 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                 String checkAvailability = String.format("select startDateTime,endDateTime,rowId,columnId from reservations where parkingId='%s'", parkingId);
                 ResultSet resultCheckAvailability = statementLogin.executeQuery(checkAvailability);
 
-                while(resultCheckAvailability.next())
-                {
+                while (resultCheckAvailability.next()) {
                     Long startTime = resultCheckAvailability.getLong(1);
                     Long endTime = resultCheckAvailability.getLong(2);
                     int rowId = resultCheckAvailability.getInt(3);
                     int columnId = resultCheckAvailability.getInt(4);
 
-                    if(Math.max(selectedStartTime,startTime)<Math.min(endTime,selectedEndTime))
-                    {
-                        reservations.add(new Pair(rowId,columnId));
+                    if (Math.max(selectedStartTime, startTime) < Math.min(endTime, selectedEndTime)) {
+                        reservations.add(new Pair(rowId, columnId));
                     }
                 }
             } catch (Exception e) {
@@ -116,53 +119,56 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
             super.onPostExecute(reservations);
 
             progressBarCheck.setVisibility(View.GONE);
-            scrollGrid.setVisibility(View.VISIBLE);
+           // scrollGrid.setVisibility(View.VISIBLE);
 //            btnBook.setVisibility(View.VISIBLE);
 
-            grid.setRowCount(numberOfRows);
-            grid.setColumnCount(numberOfColumns);
+            grid.setVisibility(View.VISIBLE);
+
+            grid.setRowCount(1000);//numberOfRows);
+            grid.setColumnCount(4);//numberOfColumns);
+            grid.setPadding(5, 5, 5, 5);
 
             final int[] selectedRow = new int[1];
             final int[] selectedColumn = new int[1];
 
             Button[][] slots = new Button[numberOfRows][numberOfColumns];
-            for(int i=0;i<numberOfRows;i++)
-            {
-                for(int j=0;j<numberOfColumns;j++)
-                {
+            for (int i = 0; i < numberOfRows; i++) {
+                for (int j = 0; j < numberOfColumns; j++) {
                     Button slot = new Button(getApplicationContext());
+                    String ID = "X: " + i + " Y: " + j;
+                    slot.setText(ID);
+                    if (reservations.contains(new Pair(i, j))) {
 
-                    if(reservations.contains(new Pair(i,j)))
-                    {
-                        slot.setBackgroundColor(Color.RED);
+                        slot.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.grid_view_red, null));
+                        //slot.setBackgroundColor(Color.RED);
                         slot.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
                                 btnBook.setVisibility(View.VISIBLE);
-                                btnBook.setText("unavialable");
+                                btnBook.setText("unavailable");
 
                             }
                         });
-                    }
-                    else
-                    {
-                        slot.setBackgroundColor(Color.GREEN);
-                        String slotId = String.valueOf(i)+","+String.valueOf(j);
+                    } else {
+
+                        slot.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.grid_view_green, null));
+                        //slot.setBackgroundColor(Color.GREEN);
+                        String slotId = String.valueOf(i) + "," + String.valueOf(j);
                         int finalI = i;
                         int finalJ = j;
                         slot.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 btnBook.setVisibility(View.VISIBLE);
-                                btnBook.setText("Book "+slotId);
+                                btnBook.setText("Book " + slotId);
                                 selectedRow[0] = finalI;
                                 selectedColumn[0] = finalJ;
                             }
                         });
                     }
-                    slot.setPadding(1,1,1,1);
-                    slot.setText(" ");
+//                    slot.setPadding(8, 8,8,8);
+                   // slot.setText("X: " + );
                     grid.addView(slot);
 
                 }
@@ -172,18 +178,14 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    if(btnBook.getText().toString().equals("unavailable"))
-                    {
+                    if (btnBook.getText().toString().equals("unavailable")) {
 
-                    }
-                    else
-                    {
-                        
+                    } else {
+
                     }
 
                 }
             });
-
 
 
         }
