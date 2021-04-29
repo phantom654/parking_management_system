@@ -5,6 +5,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.gridlayout.widget.GridLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -53,7 +55,7 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
         date = getIntent().getIntExtra("DATE", 0);
         hour = getIntent().getIntExtra("hour", 0);
         minute = getIntent().getIntExtra("minute", 0);
-        duration = getIntent().getIntExtra("duration", 0);
+        duration = getIntent().getIntExtra("DURATION", 0);
         numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
         numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
 
@@ -145,8 +147,15 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                btnBook.setVisibility(View.VISIBLE);
-                                btnBook.setText("unavailable");
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        Toast toastPasswordIncorrect = Toast.makeText(getApplicationContext(), "The slot is already occupied!", Toast.LENGTH_SHORT);
+                                        toastPasswordIncorrect.show();
+                                    }
+                                });
+
+//                                btnBook.setVisibility(View.VISIBLE);
+//                                btnBook.setText("unavailable");
 
                             }
                         });
@@ -160,10 +169,19 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                         slot.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                btnBook.setVisibility(View.VISIBLE);
-                                btnBook.setText("Book " + slotId);
-                                selectedRow[0] = finalI;
-                                selectedColumn[0] = finalJ;
+//                                btnBook.setVisibility(View.VISIBLE);
+//                                btnBook.setText("Book " + slotId);
+//                                selectedRow[0] = finalI;
+//                                selectedColumn[0] = finalJ;
+
+                                    Intent intentPay = new Intent(getApplicationContext(), Payment.class);
+
+                                    intentPay.putExtra("userId", userId);
+                                    intentPay.putExtra("finalI", finalI);
+                                    intentPay.putExtra("finalJ", finalJ);
+                                    intentPay.putExtra("duration", duration);
+
+                                    startActivity(intentPay);
                             }
                         });
                     }

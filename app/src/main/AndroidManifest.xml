@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagement">
-        <activity android:name=".CheckAvailabilityActivity"></activity>
+        <activity android:name=".CheckAvailabilityActivity" />
+        <activity android:name=".Payment"
+                    android:label="Payment Gateway"/>
         <activity android:name=".SelectDateTimeActivity" />
         <activity android:name=".SelectBuildingActivity" />
         <activity android:name=".SelectCityActivity" />

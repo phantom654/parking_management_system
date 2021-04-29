@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(sharedPreferences.getBoolean("loggedIn", false)){
             String userId = sharedPreferences.getString("userId", "null");
-            Intent intentHome = new Intent(getApplicationContext(), SelectCityActivity.class);
+            Intent intentHome = new Intent(getApplicationContext(), HomeActivity.class);
 
             intentHome.putExtra("userId", userId);
             startActivity(intentHome);

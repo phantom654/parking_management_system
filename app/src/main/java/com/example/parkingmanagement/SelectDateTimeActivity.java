@@ -37,20 +37,20 @@ public class SelectDateTimeActivity extends AppCompatActivity {
 
         parkingId = getIntent().getStringExtra("parkingId");
         userId = getIntent().getStringExtra("userId");
-        numberOfRows = getIntent().getIntExtra("numberOfRows",0);
-        numberOfColumns = getIntent().getIntExtra("numberOfColumns",0);
+        numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
+        numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
 
-        System.out.println(numberOfColumns*numberOfRows);
+        System.out.println(numberOfColumns * numberOfRows);
 
-        tvDate=findViewById(R.id.tvDate);
-        tvStartTime=findViewById(R.id.tvStartTime);
+        tvDate = findViewById(R.id.tvDate);
+        tvStartTime = findViewById(R.id.tvStartTime);
 
         etDuration = findViewById(R.id.etDuration);
 
-        btnDate=findViewById(R.id.btnDate);
-        btnStartTime=findViewById(R.id.btnStartTime);
+        btnDate = findViewById(R.id.btnDate);
+        btnStartTime = findViewById(R.id.btnStartTime);
 
-        btnCheckAvailability=findViewById(R.id.btnCheckAvailability);
+        btnCheckAvailability = findViewById(R.id.btnCheckAvailability);
 
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,8 +95,8 @@ public class SelectDateTimeActivity extends AppCompatActivity {
     private void handleDateButton() {
         Calendar calendar = Calendar.getInstance();
         YEAR = calendar.get(Calendar.YEAR);
-         MONTH = calendar.get(Calendar.MONTH);
-         DATE = calendar.get(Calendar.DATE);
+        MONTH = calendar.get(Calendar.MONTH);
+        DATE = calendar.get(Calendar.DATE);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
