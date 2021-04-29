@@ -25,9 +25,19 @@ public class HomeActivity extends AppCompatActivity {
 
         Button btnUserProfile = findViewById(R.id.btnUserProfile);
 
+        Button btnNewBooking = findViewById(R.id.btnNewBooking);
+
         String userId = getIntent().getStringExtra("userId");
 
-//        List<String> cities = (List<String>) new GetCities().execute();
+        btnNewBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SelectCityActivity.class);
+
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+            }
+        });
 
 
         btnUserProfile.setOnClickListener(new View.OnClickListener() {

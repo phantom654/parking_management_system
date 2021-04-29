@@ -15,6 +15,7 @@
         <activity android:name=".SelectBuildingActivity" />
         <activity android:name=".SelectCityActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".UserProfile"
                     android:label="@string/user_profile"/>
         <activity android:name=".ActiveBookings"

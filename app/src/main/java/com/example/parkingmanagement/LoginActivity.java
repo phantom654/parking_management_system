@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                         }
 
-                        Intent intent = new Intent(getApplicationContext(), SelectCityActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
 
                         intent.putExtra("userId", userId);
                         startActivity(intent);
