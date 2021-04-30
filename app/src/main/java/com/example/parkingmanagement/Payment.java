@@ -1,7 +1,9 @@
 package com.example.parkingmanagement;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -27,9 +29,11 @@ import java.sql.Statement;
 public class Payment extends AppCompatActivity implements PaymentResultListener {
 
     Button btnPay;
-    TextView tvAmountToPay, tvSlot;
+    TextView tvAmountToPay, tvSlot, tvSelectedDate, tvDuration;
 
-    String userId, name, address, password, contactNum, email, vehicleId, slot;
+    String userId, name, address, password, contactNum, email, vehicleId, slot, parkingId, time, date, duration;
+
+    String selectedStartTime, selectedEndTime;
 
     ProgressBar progressbar;
 
@@ -44,6 +48,8 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
         tvAmountToPay = findViewById(R.id.tvAmountToPay);
         tvSlot = findViewById(R.id.tvSlot);
         progressbar = findViewById(R.id.progressBarPay);
+        tvSelectedDate = findViewById(R.id.tvSelectedDate);
+        tvDuration = findViewById(R.id.tvDuration);
 
         if (getIntent().hasExtra("userId")) {
             userId = getIntent().getStringExtra("userId");
@@ -56,6 +62,21 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
 
         finalI = getIntent().getIntExtra("finalI", 0);
         finalJ = getIntent().getIntExtra("finalJ", 0);
+        parkingId=getIntent().getStringExtra("parkingId");
+        selectedStartTime=getIntent().getStringExtra("selectedStartTime");
+        selectedEndTime=getIntent().getStringExtra("selectedEndTime");
+
+        System.out.println(selectedStartTime);
+
+        duration=Integer.toString(getIntent().getIntExtra("duration", 0));
+        date=getIntent().getStringExtra("date");
+
+        System.out.println(date);
+
+        tvDuration.setText("Duration\t: "+duration);
+        tvSelectedDate.setText("Date\t:"+date);
+
+
 
         System.out.println(amount);
         System.out.println(finalI);
@@ -79,12 +100,78 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
     public void onPaymentSuccess(String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("PaymentID");
+        builder.setTitle("Processing Payment");
 
         builder.setMessage(s);
 
         builder.show();
+
+
+        String params[] = {s};
+        new EnterIntoDatabase().execute(params);
+
     }
+
+
+    class EnterIntoDatabase extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            btnPay.setText("Processing Payment, Please Wait");
+
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+            String paymentId = params[0];
+
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
+                Statement statementLogin = connection.createStatement();
+
+                String enterRegistration = String.format("INSERT INTO `reservations` (`parkingId`, `startDateTime`, `endDateTime`, `userId`, `innoiceId`, `rowId`, `columnId`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", parkingId, selectedStartTime, selectedEndTime, userId, paymentId, Integer.toString(finalI), Integer.toString(finalJ) );
+                int resultCheckAvailability = statementLogin.executeUpdate(enterRegistration);
+
+                Intent intent = new Intent(getApplicationContext(), ShowInvoiceActivity.class);
+
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("vehicleId", vehicleId);
+                intent.putExtra("paymentId", paymentId);
+                intent.putExtra("parkingId", parkingId);
+                intent.putExtra("slotId", slot);
+                intent.putExtra("userID", userId);
+                intent.putExtra("date", date);
+                intent.putExtra("duration",duration);
+
+
+
+//                Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
+
+
+
+                startActivity(intent);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            btnPay.setText("Pay");
+        }
+    }
+
 
     @Override
     public void onPaymentError(int i, String s) {

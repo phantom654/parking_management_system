@@ -107,7 +107,9 @@ public class SelectDateTimeActivity extends AppCompatActivity {
                 calendar1.set(Calendar.MONTH, month);
                 calendar1.set(Calendar.DATE, date);
                 String dateText = DateFormat.format("EEEE, MMM d, yyyy", calendar1).toString();
-
+YEAR=year;
+MONTH=month;
+DATE=date;
                 tvDate.setText(dateText);
             }
         }, YEAR, MONTH, DATE);
@@ -121,7 +123,7 @@ public class SelectDateTimeActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         HOUR = calendar.get(Calendar.HOUR);
         MINUTE = calendar.get(Calendar.MINUTE);
-        boolean is24HourFormat = DateFormat.is24HourFormat(this);
+//        boolean is24HourFormat = DateFormat.is24HourFormat(this);
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -130,10 +132,12 @@ public class SelectDateTimeActivity extends AppCompatActivity {
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(Calendar.HOUR, hour);
                 calendar1.set(Calendar.MINUTE, minute);
-                String dateText = DateFormat.format("h:mm a", calendar1).toString();
+                String dateText = hour+":"+minute;
+                HOUR=hour;
+                MINUTE=minute;
                 tvStartTime.setText(dateText);
             }
-        }, HOUR, MINUTE, is24HourFormat);
+        }, HOUR, MINUTE, true);
 
         timePickerDialog.show();
 
