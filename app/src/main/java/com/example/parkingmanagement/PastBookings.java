@@ -74,17 +74,17 @@ public class PastBookings extends AppCompatActivity {
                 Connection connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
                 Statement statementLogin = connection.createStatement();
 
-                String queryCities = String.format("select * from reservations where userId = '%s'", userId);
+                String queryCities = String.format("select startDateTime,endDateTime from reservations where userId = '%s'", userId);
                 ResultSet resultSet = statementLogin.executeQuery(queryCities);
 
-                Date currentDateTime = Calendar.getInstance().getTime();
-
+                Date tempCurrentDateTime = Calendar.getInstance().getTime();
+                Long currentDateTime = tempCurrentDateTime.getTime();
                 while(resultSet.next())
                 {
-                    Date startDateTime = new Date(TimeUnit.SECONDS.toMillis(resultSet.getLong(1)));
-                    Date endDateTime = new Date(TimeUnit.SECONDS.toMillis(resultSet.getLong(2)));
+                    Long startDateTime = resultSet.getLong(1);
+                    Long endDateTime = resultSet.getLong(2);
 
-                    if(endDateTime < currentDateTime)
+                    if(currentDateTime > endDateTime)
                     pastBookings.add("Start : " + startDateTime + ", End: " + endDateTime);
                 }
 
