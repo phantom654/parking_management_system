@@ -53,8 +53,8 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
         year = getIntent().getIntExtra("YEAR", 0);
         month = getIntent().getIntExtra("MONTH", 0);
         date = getIntent().getIntExtra("DATE", 0);
-        hour = getIntent().getIntExtra("hour", 0);
-        minute = getIntent().getIntExtra("minute", 0);
+        hour = getIntent().getIntExtra("HOUR", 0);
+        minute = getIntent().getIntExtra("MINUTE", 0);
         duration = getIntent().getIntExtra("DURATION", 0);
         numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
         numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
@@ -113,12 +113,17 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            reservations.add(new Pair(selectedStartTime,selectedEndTime));
+
             return reservations;
         }
 
         @Override
         protected void onPostExecute(ArrayList<Pair<Long, Long>> reservations) {
             super.onPostExecute(reservations);
+
+            Long selectedStartTime = reservations.get(reservations.size()-1).first;
+            Long selectedEndTime = reservations.get(reservations.size()-1).second;
 
             progressBarCheck.setVisibility(View.GONE);
            // scrollGrid.setVisibility(View.VISIBLE);
@@ -180,6 +185,24 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                                     intentPay.putExtra("finalI", finalI);
                                     intentPay.putExtra("finalJ", finalJ);
                                     intentPay.putExtra("duration", duration);
+                                    intentPay.putExtra("parkingId", parkingId);
+                                    intentPay.putExtra("selectedStartTime", selectedStartTime.toString());
+                                    intentPay.putExtra("selectedEndTime", selectedEndTime.toString());
+
+                                Date selectedDate = new Date(year, month, date, hour, minute);
+
+                                Date temp = new Date(year, month, date);
+
+                                System.out.println(Integer.toString(hour));
+
+                                System.out.println(temp);
+                                System.out.println(new Date(2021,2,2,2,2));
+                                System.out.println(year);
+                                System.out.println(selectedDate);
+
+                                System.out.println(selectedStartTime.toString());
+
+                                    intentPay.putExtra("date", date+"/"+(month+1)+"/"+year+", Time : "+hour+":"+minute);
 
                                     startActivity(intentPay);
                             }
