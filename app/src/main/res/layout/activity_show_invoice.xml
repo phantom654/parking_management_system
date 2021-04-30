@@ -10,16 +10,17 @@
         android:id="@+id/tvName"
         android:layout_width="342dp"
         android:layout_height="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="176dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="342dp"
-        android:layout_height="30dp"
+        android:layout_height="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,8 +28,8 @@
 
     <TextView
         android:id="@+id/tvVehicleId"
-        android:layout_width="341dp"
-        android:layout_height="34dp"
+        android:layout_width="342dp"
+        android:layout_height="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +37,8 @@
 
     <TextView
         android:id="@+id/tvSlotId"
-        android:layout_width="343dp"
-        android:layout_height="42dp"
+        android:layout_width="342dp"
+        android:layout_height="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +46,8 @@
 
     <TextView
         android:id="@+id/tvPaymentId"
-        android:layout_width="345dp"
-        android:layout_height="39dp"
+        android:layout_width="342dp"
+        android:layout_height="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,7 @@
         android:id="@+id/btnGoHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="200dp"
         android:text="Go to home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -65,8 +66,8 @@
 
     <TextView
         android:id="@+id/tvInvoiceDate"
-        android:layout_width="335dp"
-        android:layout_height="39dp"
+        android:layout_width="342dp"
+        android:layout_height="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +75,8 @@
 
     <TextView
         android:id="@+id/tvInvoiceDuration"
-        android:layout_width="337dp"
-        android:layout_height="40dp"
+        android:layout_width="342dp"
+        android:layout_height="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

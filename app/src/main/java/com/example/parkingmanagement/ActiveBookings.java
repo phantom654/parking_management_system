@@ -17,7 +17,6 @@ public class ActiveBookings extends AppCompatActivity {
             userId = getIntent().getStringExtra("userId");
         }
 
-
         setContentView(R.layout.activity_activebookings);
 
 

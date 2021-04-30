@@ -122,6 +122,7 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
             super.onPreExecute();
 
             btnPay.setText("Processing Payment, Please Wait");
+            btnPay.setEnabled(false);
 
         }
 
@@ -171,6 +172,8 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
             super.onPostExecute(aVoid);
 
             btnPay.setText("Pay");
+
+            btnPay.setEnabled(true);
         }
     }
 
