@@ -31,6 +31,8 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
 
     String userId, name, address, password, contactNum, email, vehicleId, slot;
 
+    String companyName = "PSR Pvt. Ltd.";
+
     ProgressBar progressbar;
 
     int finalI, finalJ, amount;
@@ -57,9 +59,9 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
         finalI = getIntent().getIntExtra("finalI", 0);
         finalJ = getIntent().getIntExtra("finalJ", 0);
 
-        System.out.println(amount);
-        System.out.println(finalI);
-        System.out.println(finalJ);
+//        System.out.println(amount);
+//        System.out.println(finalI);
+//        System.out.println(finalJ);
 
         slot = "Selected slot : (" + finalI + ", " + finalJ + ")";
 
@@ -172,12 +174,12 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
 
             checkout.setKeyID("rzp_test_G3SP6nMsC777Aa");
 
-            checkout.setImage(R.drawable.common_full_open_on_phone);
+            checkout.setImage(R.drawable.logo);
 
             JSONObject object = new JSONObject();
 
             try {
-                object.put("name", name);
+                object.put("name", companyName);
 
                 object.put("description", slot);
 
