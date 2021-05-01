@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class PastBookings extends AppCompatActivity {
 
 
-    String userId, name, address, password, contactNum, email, vehicleId, slot, parkingId, time, date, duration, paymentId;
+    String userId, name, email, vehicleId;
 
     TextView tvPast;
     ListView lvPast;
@@ -35,9 +35,11 @@ public class PastBookings extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getIntent().hasExtra("userId")) {
-            userId = getIntent().getStringExtra("userId");
-        }
+
+        userId = getIntent().getStringExtra("userId");
+        name = getIntent().getStringExtra("name");
+        email = getIntent().getStringExtra("email");
+        vehicleId = getIntent().getStringExtra("vehicleId");
 
         setContentView(R.layout.activity_pastbookings);
 
@@ -101,27 +103,6 @@ public class PastBookings extends AppCompatActivity {
             progressBarPast.setVisibility(View.GONE);
 
             citiesAdapter.addAll(strings);
-
-            lvPast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    Intent intent = new Intent(getApplicationContext(), ShowInvoiceActivity.class);
-
-                    intent.putExtra("name", name);
-                    intent.putExtra("email", email);
-                    intent.putExtra("vehicleId", vehicleId);
-                    intent.putExtra("paymentId", paymentId);
-                    intent.putExtra("parkingId", parkingId);
-                    intent.putExtra("slotId", slot);
-                    intent.putExtra("userID", userId);
-                    intent.putExtra("date", date);
-                    intent.putExtra("duration",duration);
-
-                    startActivity(intent);
-
-                }
-            });
 
         }
     }
