@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UserProfile extends AppCompatActivity {
 
-    Button btnActiveBookings, btnPastBookings, btnEditProfile;
+    Button btnPastBookings, btnEditProfile;
 
     String userId;
 
@@ -23,19 +23,8 @@ public class UserProfile extends AppCompatActivity {
 
         setContentView(R.layout.activity_userprofile);
 
-        btnActiveBookings = findViewById(R.id.btnActiveBookings);
         btnPastBookings = findViewById(R.id.btnUpdate);
         btnEditProfile = findViewById(R.id.btnEditProfile);
-
-        btnActiveBookings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentActiveBookings = new Intent(getApplicationContext(), ActiveBookings.class);
-                intentActiveBookings.putExtra("userId", userId);
-
-                startActivity(intentActiveBookings);
-            }
-        });
 
         btnPastBookings.setOnClickListener(new View.OnClickListener() {
             @Override

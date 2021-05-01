@@ -83,11 +83,11 @@ public class PastBookings extends AppCompatActivity {
                 Long currentDateTime = tempCurrentDateTime.getTime();
                 while(resultSet.next())
                 {
-                    Long startDateTime = resultSet.getLong(1);
-                    Long endDateTime = resultSet.getLong(2);
+                    Date startDateTime = new Date(resultSet.getLong(1));
+                    Date endDateTime = new Date(resultSet.getLong(2));
 
-                    if(currentDateTime > endDateTime)
-                    pastBookings.add("Start : " + startDateTime + ", End: " + endDateTime);
+                   // if(currentDateTime > endDateTime)
+                    pastBookings.add("Start : " + startDateTime + "\n End: " + endDateTime);
                 }
 
             } catch (Exception e) {
