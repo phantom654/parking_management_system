@@ -84,7 +84,6 @@
         android:id="@+id/textView3"
         android:layout_width="415dp"
         android:layout_height="64dp"
-        android:background="#35A4A8"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
         android:text="Enter Details of the Parking Lot"

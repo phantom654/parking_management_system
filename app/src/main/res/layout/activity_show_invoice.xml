@@ -75,8 +75,8 @@
 
     <Button
         android:id="@+id/btnPrint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="153dp"
+        android:layout_height="50dp"
         android:layout_marginTop="248dp"
         android:text="Print"
         app:layout_constraintEnd_toEndOf="parent"
