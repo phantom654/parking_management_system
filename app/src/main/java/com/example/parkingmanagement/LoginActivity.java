@@ -32,20 +32,23 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
-            etEmail=findViewById(R.id.etEmail);
-            etPassword=findViewById(R.id.etCurrPass);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etCurrPass);
 
-            btnLogin = findViewById(R.id.btnUpdate);
-            btnRegisterPage = findViewById(R.id.btnRegisterPage);
+        btnLogin = findViewById(R.id.btnUpdate);
+        btnRegisterPage = findViewById(R.id.btnRegisterPage);
 
-            progressBarLogin = findViewById(R.id.progressBarUpdate);
+        progressBarLogin = findViewById(R.id.progressBarUpdate);
 
-            btnLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    String[] params = {etEmail.getText().toString(), etPassword.getText().toString()};
+                String[] params = {etEmail.getText().toString(), etPassword.getText().toString()};
 
+//<<<<<<< HEAD
+                new Login().execute(params);
+//=======
                     if(etEmail.getText().toString().equals("admin"))
                     {
                         if(etPassword.getText().toString().equals("phantom654"))
@@ -68,19 +71,20 @@ public class LoginActivity extends AppCompatActivity {
                         new Login().execute(params);
                     }
 
+//>>>>>>> 22c14112945307b11d68bd8cd82d574032223ed1
 
-                }
-            });
+            }
+        });
 
-            btnRegisterPage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnRegisterPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    Intent intentRegisterPage = new Intent(getApplicationContext(), Register.class);
+                Intent intentRegisterPage = new Intent(getApplicationContext(), Register.class);
 
-                    startActivity(intentRegisterPage);
-                }
-            });
+                startActivity(intentRegisterPage);
+            }
+        });
 
 
     }
