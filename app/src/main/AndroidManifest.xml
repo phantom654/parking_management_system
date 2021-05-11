@@ -3,6 +3,7 @@
     package="com.example.parkingmanagement">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagement">
-        <activity android:name=".ShowInvoiceActivity"></activity>
+        
+        <provider
+            android:authorities="com.example.parkingmanagement.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:name="androidx.core.content.FileProvider">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths">
+
+            </meta-data>
+
+        </provider>
+
+        <activity
+            android:name=".ShowInvoiceActivity"
+            android:label="Invoice">
+
+        </activity>
         <activity android:name=".CheckAvailabilityActivity" />
         <activity
             android:name=".Payment"

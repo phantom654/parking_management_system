@@ -32,34 +32,34 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
-            etEmail=findViewById(R.id.etEmail);
-            etPassword=findViewById(R.id.etCurrPass);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etCurrPass);
 
-            btnLogin = findViewById(R.id.btnUpdate);
-            btnRegisterPage = findViewById(R.id.btnRegisterPage);
+        btnLogin = findViewById(R.id.btnUpdate);
+        btnRegisterPage = findViewById(R.id.btnRegisterPage);
 
-            progressBarLogin = findViewById(R.id.progressBarUpdate);
+        progressBarLogin = findViewById(R.id.progressBarUpdate);
 
-            btnLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    String[] params = {etEmail.getText().toString(), etPassword.getText().toString()};
+                String[] params = {etEmail.getText().toString(), etPassword.getText().toString()};
 
-                    new Login().execute(params);
+                new Login().execute(params);
 
-                }
-            });
+            }
+        });
 
-            btnRegisterPage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnRegisterPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    Intent intentRegisterPage = new Intent(getApplicationContext(), Register.class);
+                Intent intentRegisterPage = new Intent(getApplicationContext(), Register.class);
 
-                    startActivity(intentRegisterPage);
-                }
-            });
+                startActivity(intentRegisterPage);
+            }
+        });
 
 
     }
