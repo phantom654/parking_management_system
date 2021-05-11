@@ -13,15 +13,18 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvHeading"
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="15dp"
+            android:layout_height="64dp"
+            android:background="#35A4A8"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
             android:text="Select Parking Slot"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"

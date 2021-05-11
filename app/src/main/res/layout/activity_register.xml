@@ -6,10 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Register">
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="415dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:background="#35A4A8"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Enter your details below"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <EditText
         android:id="@+id/etEnterVehicleId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="373dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="76dp"
         android:ems="10"
         android:hint="VehicleId"
@@ -21,8 +36,8 @@
 
     <EditText
         android:id="@+id/etEnterEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="376dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="248dp"
         android:ems="10"
         android:hint="Email"
@@ -34,8 +49,8 @@
 
     <EditText
         android:id="@+id/etEnterContactNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="373dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="192dp"
         android:ems="10"
         android:hint="Contact Number"
@@ -47,8 +62,8 @@
 
     <EditText
         android:id="@+id/etEnterAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="371dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="132dp"
         android:ems="10"
         android:hint="Address"
@@ -60,8 +75,8 @@
 
     <EditText
         android:id="@+id/etEnterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="379dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="304dp"
         android:ems="10"
         android:hint="Name"
@@ -73,8 +88,8 @@
 
     <EditText
         android:id="@+id/etConfirmPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="367dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Confirm password"
@@ -86,8 +101,8 @@
 
     <EditText
         android:id="@+id/etCreatePass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="369dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="72dp"
         android:ems="10"
         android:hint="Create password"
@@ -99,8 +114,8 @@
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="176dp"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,8 +124,8 @@
 
     <Button
         android:id="@+id/btnReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="116dp"
         android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"

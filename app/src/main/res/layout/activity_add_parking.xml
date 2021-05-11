@@ -8,56 +8,66 @@
 
     <EditText
         android:id="@+id/etCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="277dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Enter City"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <EditText
-        android:id="@+id/etBuilding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Building"
-        android:inputType="textPersonName"
+    <Button
+        android:id="@+id/btnConfirmAddParking"
+        android:layout_width="131dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:text="ADD"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCity" />
-
-    <EditText
-        android:id="@+id/etRows"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Number of Rows"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBuilding" />
+        app:layout_constraintTop_toBottomOf="@+id/etColumns" />
 
     <EditText
         android:id="@+id/etColumns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="276dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Enter Number of Columns"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etRows" />
 
-    <Button
-        android:id="@+id/btnConfirmAddParking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD"
+    <EditText
+        android:id="@+id/etRows"
+        android:layout_width="276dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Enter Number of Rows"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etColumns" />
+        app:layout_constraintTop_toBottomOf="@+id/etBuilding" />
+
+    <EditText
+        android:id="@+id/etBuilding"
+        android:layout_width="276dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Enter Building"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCity" />
 
     <ProgressBar
         android:id="@+id/progressBarAddParking"
@@ -69,5 +79,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConfirmAddParking" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="415dp"
+        android:layout_height="64dp"
+        android:background="#35A4A8"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Enter Details of the Parking Lot"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

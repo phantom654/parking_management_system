@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/etVehicleId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="308dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="VehicleId"
@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="318dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="184dp"
         android:ems="10"
         android:hint="Email"
@@ -34,8 +34,8 @@
 
     <EditText
         android:id="@+id/etContactNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="313dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="128dp"
         android:ems="10"
         android:hint="Contact Number"
@@ -47,8 +47,8 @@
 
     <EditText
         android:id="@+id/etAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="72dp"
         android:ems="10"
         android:hint="Address"
@@ -60,8 +60,8 @@
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="324dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="240dp"
         android:ems="10"
         android:hint="Name"
@@ -73,8 +73,8 @@
 
     <EditText
         android:id="@+id/etCurrPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="307dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Current password"
@@ -86,8 +86,8 @@
 
     <Button
         android:id="@+id/btnUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="184dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="172dp"
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,11 +120,12 @@
         android:id="@+id/tvUserId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="364dp"
         android:text="UserId : "
-        app:layout_constraintBottom_toTopOf="@+id/btnUpdate"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/etName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

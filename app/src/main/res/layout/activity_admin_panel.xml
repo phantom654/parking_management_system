@@ -6,13 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".AdminPanel">
 
-    <Button
-        android:id="@+id/btnAddParking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="add parking"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="415dp"
+        android:layout_height="64dp"
+        android:background="#35A4A8"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Admin Panel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddParking"
+        android:layout_width="279dp"
+        android:layout_height="46dp"
+        android:text="add parking"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.066" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

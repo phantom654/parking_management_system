@@ -30,17 +30,8 @@
             android:name=".UserProfile"
             android:label="@string/user_profile" />
         <activity
-            android:name=".ActiveBookings"
-            android:label="@string/active_bookings" />
-        <activity
-            android:name=".PastBookings"
-            android:label="@string/past_bookings" />
-        <activity
             android:name=".EditProfile"
             android:label="@string/edit_profile" />
-        <activity
-            android:name=".UpdatePassword"
-            android:label="Update Password" />
         <activity
             android:name=".Register"
             android:label="Register" />
