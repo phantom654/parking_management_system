@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class PastBookings extends AppCompatActivity {
 
 
-    String userId, name, email, vehicleId;
+    String userId;
 
     TextView tvPast;
     ListView lvPast;
@@ -37,13 +37,12 @@ public class PastBookings extends AppCompatActivity {
 
 
         userId = getIntent().getStringExtra("userId");
-        name = getIntent().getStringExtra("name");
-        email = getIntent().getStringExtra("email");
-        vehicleId = getIntent().getStringExtra("vehicleId");
+
+        System.out.println(userId);
 
         setContentView(R.layout.activity_pastbookings);
 
-        tvPast = findViewById(R.id.tvPast);
+//        tvPast = findViewById(R.id.tvPast);
         lvPast = findViewById(R.id.lvPast);
         progressBarPast = findViewById(R.id.progressBarPast);
 
