@@ -184,9 +184,6 @@ public class ShowInvoiceActivity extends AppCompatActivity {
 
             addLineSeperator(document);
 
-//            titleFont = new Font(fontName, 32.0f, Font.NORMAL, BaseColor.BLACK);
-//            addNewItem(document, "Booking Details", Element.ALIGN_CENTER, titleFont);
-
             // Add product order details
             addLineSpace(document);
             // Item 1
@@ -194,12 +191,6 @@ public class ShowInvoiceActivity extends AppCompatActivity {
             addItemWithLeftAndRight(document, duration + "*1", duration, titleFont, orderNumberValueFont);
 
             addLineSeperator(document);
-
-//            // Item 2
-//            addItemWithLeftAndRight(document, "Pizza 25", "(0.0%)", titleFont, orderNumberValueFont);
-//            addItemWithLeftAndRight(document, "12.0*1000", "12000.0", titleFont, orderNumberValueFont);
-//
-//            addLineSeperator(document);
 
             // Total
             addLineSpace(document);
