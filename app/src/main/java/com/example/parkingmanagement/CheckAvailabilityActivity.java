@@ -52,17 +52,25 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
         tvHeading = findViewById(R.id.tvHeading);
 
         year = getIntent().getIntExtra("YEAR", 0);
+
         month = getIntent().getIntExtra("MONTH", 0);
+
         date = getIntent().getIntExtra("DATE", 0);
+
         hour = getIntent().getIntExtra("HOUR", 0);
+
         minute = getIntent().getIntExtra("MINUTE", 0);
+
         duration = getIntent().getIntExtra("DURATION", 0);
+
         numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
+
         numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
         city = getIntent().getStringExtra("city");
         building=getIntent().getStringExtra("building");
 
         userId = getIntent().getStringExtra("userId");
+
         parkingId = getIntent().getStringExtra("parkingId");
 
 
