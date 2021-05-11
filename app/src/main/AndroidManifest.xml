@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SMS_FINANCIAL_TRANSACTIONS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagement">
-        
+
         <provider
             android:authorities="com.example.parkingmanagement.fileprovider"
             android:exported="false"
@@ -32,6 +34,10 @@
             android:label="Invoice">
 
         </activity>
+        <activity android:name=".AddParking"></activity>
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".AllBookingsActivity" />
+
         <activity android:name=".CheckAvailabilityActivity" />
         <activity
             android:name=".Payment"

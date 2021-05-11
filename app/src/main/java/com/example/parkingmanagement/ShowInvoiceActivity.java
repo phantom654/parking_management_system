@@ -43,7 +43,7 @@ import java.lang.annotation.Documented;
 
 public class ShowInvoiceActivity extends AppCompatActivity {
 
-    String name, email, vehicleId, slotId, paymentId, parkingId, userId, date, duration;
+    String name, email, vehicleId, slotId, paymentId, parkingId, userId, date, duration, city, building;
 
     TextView tvName, tvEmail, tvVehicleId, tvSlotId, tvPaymentId, tvInvoiceDate, tvInvoiceDuration;
 
@@ -120,8 +120,8 @@ public class ShowInvoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-
-                intent.putExtra("userID", userId);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("userId", userId);
 
                 startActivity(intent);
 

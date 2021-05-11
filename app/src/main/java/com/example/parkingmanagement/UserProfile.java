@@ -29,7 +29,7 @@ public class UserProfile extends AppCompatActivity {
         btnPastBookings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentPastBookings = new Intent(getApplicationContext(), PastBookings.class);
+                Intent intentPastBookings = new Intent(getApplicationContext(), AllBookingsActivity.class);
                 intentPastBookings.putExtra("userId", userId);
 
                 startActivity(intentPastBookings);

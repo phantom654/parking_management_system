@@ -105,6 +105,8 @@ public class SelectBuildingActivity extends AppCompatActivity {
                     intent.putExtra("userId", userId);
                     intent.putExtra("numberOfRows", strings.get(position).second.first);
                     intent.putExtra("numberOfColumns", strings.get(position).second.second);
+                    intent.putExtra("city", city);
+                    intent.putExtra("building", strings.get(position).first.first);
 
                     startActivity(intent);
 
