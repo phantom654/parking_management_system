@@ -34,7 +34,6 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
     ProgressBar progressBarCheck;
     GridLayout grid;
     Button btnBook;
-    TextView tvHeading;
     String city, building;
 
     GridLayout scrollGrid;
@@ -48,8 +47,6 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
         grid = findViewById(R.id.grid);
         //scrollGrid = findViewById(R.id.grid);
         btnBook = findViewById(R.id.btnBook);
-
-        tvHeading = findViewById(R.id.tvHeading);
 
         year = getIntent().getIntExtra("YEAR", 0);
 

@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/btnUserProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="293dp"
+        android:layout_height="52dp"
         android:layout_marginBottom="290dp"
         android:text="User Profile"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,20 +21,19 @@
 
     <Button
         android:id="@+id/btnNewBooking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="294dp"
+        android:layout_height="54dp"
         android:text="New Booking"
         app:layout_constraintBottom_toTopOf="@+id/btnUserProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
+        app:layout_constraintVertical_bias="0.964" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="206dp"
-        android:layout_height="0dp"
+        android:layout_width="294dp"
+        android:layout_height="305dp"
         android:layout_marginBottom="78dp"
         app:layout_constraintBottom_toTopOf="@+id/btnUserProfile"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,11 +43,12 @@
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUserProfile" />
 </androidx.constraintlayout.widget.ConstraintLayout>

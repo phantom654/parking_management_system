@@ -8,35 +8,40 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Reservation Date and Time"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_width="415dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:background="#35A4A8"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Select Reservation Time"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/tvDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_width="197dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:text="Date"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toEndOf="@+id/btnDate"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btnDate"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="139dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
         android:text="Set Date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -55,25 +60,26 @@
 
     <TextView
         android:id="@+id/tvStartTime"
-        android:layout_width="243dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="222dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Start time"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <Button
         android:id="@+id/btnCheckAvailability"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="239dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="52dp"
         android:text="CHECK AVAILABILITY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDuration" />
 
@@ -81,11 +87,12 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="sans-serif-black"
         android:text="Duration(minutes)"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/btnStartTime"
-        tools:layout_editor_absoluteX="5dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartTime" />
 
     <EditText
         android:id="@+id/etDuration"
