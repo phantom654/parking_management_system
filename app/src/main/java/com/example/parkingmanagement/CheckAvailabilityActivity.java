@@ -35,6 +35,7 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
     GridLayout grid;
     Button btnBook;
     TextView tvHeading;
+    String city, building;
 
     GridLayout scrollGrid;
 
@@ -58,6 +59,8 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
         duration = getIntent().getIntExtra("DURATION", 0);
         numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
         numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
+        city = getIntent().getStringExtra("city");
+        building=getIntent().getStringExtra("building");
 
         userId = getIntent().getStringExtra("userId");
         parkingId = getIntent().getStringExtra("parkingId");
@@ -85,8 +88,12 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
 
             ArrayList<Pair<Long, Long>> reservations = new ArrayList<>();
 
-            Date startDate = new Date(year, month, date, hour, minute);
+            Date startDate = new Date(year-1900, month, date, hour, minute);
             Date endDate = new Date(startDate.getTime() + duration * 60 * 1000);
+
+            System.out.println(year+" "+month+" "+date+" "+hour+" "+minute);
+
+            System.out.println(startDate);
 
             Long selectedStartTime = startDate.getTime();
             Long selectedEndTime = endDate.getTime();
@@ -188,15 +195,17 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
                                     intentPay.putExtra("parkingId", parkingId);
                                     intentPay.putExtra("selectedStartTime", selectedStartTime.toString());
                                     intentPay.putExtra("selectedEndTime", selectedEndTime.toString());
+                                    intentPay.putExtra("city", city);
+                                    intentPay.putExtra("building", building);
 
-                                Date selectedDate = new Date(year, month, date, hour, minute);
+                                Date selectedDate = new Date(year-1900, month, date, hour, minute);
 
-                                Date temp = new Date(year, month, date);
+                                Date temp = new Date(year-1900, month, date);
 
                                 System.out.println(Integer.toString(hour));
 
                                 System.out.println(temp);
-                                System.out.println(new Date(2021,2,2,2,2));
+                                System.out.println(new Date(2021-1900,2,2,2,2));
                                 System.out.println(year);
                                 System.out.println(selectedDate);
 

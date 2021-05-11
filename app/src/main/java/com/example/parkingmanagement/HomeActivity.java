@@ -1,8 +1,13 @@
 package com.example.parkingmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -25,9 +30,18 @@ public class HomeActivity extends AppCompatActivity {
 
         Button btnUserProfile = findViewById(R.id.btnUserProfile);
 
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS)
+                != PackageManager.PERMISSION_GRANTED)
+        {
+            // Permission is not granted
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, 10);
+        }
+
         Button btnNewBooking = findViewById(R.id.btnNewBooking);
 
         String userId = getIntent().getStringExtra("userId");
+
+        System.out.println(userId);
 
         btnNewBooking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +64,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Button btnLogout = findViewById(R.id.btnLogout);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                sharedPreferences.edit().putBoolean("loggedIn", false).apply();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+                startActivity(intent);
+
+            }
+        });
 
     }
 

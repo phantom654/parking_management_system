@@ -27,7 +27,7 @@ public class SelectDateTimeActivity extends AppCompatActivity {
 
     int YEAR, MONTH, DATE, HOUR, MINUTE;
 
-    String parkingId, userId;
+    String parkingId, userId;String city, building;
     int numberOfRows, numberOfColumns;
 
     @Override
@@ -39,6 +39,8 @@ public class SelectDateTimeActivity extends AppCompatActivity {
         userId = getIntent().getStringExtra("userId");
         numberOfRows = getIntent().getIntExtra("numberOfRows", 0);
         numberOfColumns = getIntent().getIntExtra("numberOfColumns", 0);
+        city = getIntent().getStringExtra("city");
+        building=getIntent().getStringExtra("building");
 
         System.out.println(numberOfColumns * numberOfRows);
 
@@ -84,6 +86,8 @@ public class SelectDateTimeActivity extends AppCompatActivity {
                 intent.putExtra("parkingId", parkingId);
                 intent.putExtra("numberOfRows", numberOfRows);
                 intent.putExtra("numberOfColumns", numberOfColumns);
+                intent.putExtra("city", city);
+                intent.putExtra("building", building);
                 startActivity(intent);
 
 
@@ -123,7 +127,7 @@ DATE=date;
         Calendar calendar = Calendar.getInstance();
         HOUR = calendar.get(Calendar.HOUR);
         MINUTE = calendar.get(Calendar.MINUTE);
-//        boolean is24HourFormat = DateFormat.is24HourFormat(this);
+        boolean is24HourFormat = DateFormat.is24HourFormat(this);
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -137,7 +141,7 @@ DATE=date;
                 MINUTE=minute;
                 tvStartTime.setText(dateText);
             }
-        }, HOUR, MINUTE, true);
+        }, HOUR, MINUTE, is24HourFormat);
 
         timePickerDialog.show();
 

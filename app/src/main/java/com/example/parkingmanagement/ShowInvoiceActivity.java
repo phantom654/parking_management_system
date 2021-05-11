@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class ShowInvoiceActivity extends AppCompatActivity {
 
-    String name, email, vehicleId, slotId, paymentId, parkingId, userId, date, duration;
+    String name, email, vehicleId, slotId, paymentId, parkingId, userId, date, duration, city, building;
 
     TextView tvName, tvEmail, tvVehicleId, tvSlotId, tvPaymentId, tvInvoiceDate, tvInvoiceDuration;
 
@@ -46,17 +46,17 @@ public class ShowInvoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-
-                intent.putExtra("userID", userId);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("userId", userId);
 
                 startActivity(intent);
 
             }
         });
 
-        tvName.setText("Name\t: "+name);
-        tvEmail.setText("Email\t: "+email);
-        tvVehicleId.setText("VehicleId\t: "+vehicleId);
+        tvName.setText("City\t: "+name);
+        tvEmail.setText("Building\t: "+email);
+        tvVehicleId.setText("UserId\t: "+userId);
         tvPaymentId.setText("PaymentId\t: "+paymentId);
         tvSlotId.setText("Parking\t: "+parkingId+", Slot: "+slotId);
         tvInvoiceDate.setText("Date\t: "+date);

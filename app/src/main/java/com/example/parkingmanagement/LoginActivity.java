@@ -46,7 +46,28 @@ public class LoginActivity extends AppCompatActivity {
 
                     String[] params = {etEmail.getText().toString(), etPassword.getText().toString()};
 
-                    new Login().execute(params);
+                    if(etEmail.getText().toString().equals("admin"))
+                    {
+                        if(etPassword.getText().toString().equals("phantom654"))
+                        {
+                            Intent intent = new Intent(getApplicationContext(), AdminPanel.class);
+
+                            startActivity(intent);
+
+
+                        }
+                        else
+                        {
+                            System.out.println("wrong admin password");
+                            Toast wrongPassword  = Toast.makeText(getApplicationContext(), "Wrong Admin Password !!", Toast.LENGTH_SHORT);
+                            wrongPassword.show();
+                        }
+                    }
+                    else
+                    {
+                        new Login().execute(params);
+                    }
+
 
                 }
             });
