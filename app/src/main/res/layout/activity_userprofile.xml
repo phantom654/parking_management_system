@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="415dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="10dp"
-        android:background="#35A4A8"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="User Profile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="217dp"
@@ -29,18 +14,16 @@
         android:text="show Bookings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnEditProfile"
         android:layout_width="215dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginTop="228dp"
         android:text="Edit Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

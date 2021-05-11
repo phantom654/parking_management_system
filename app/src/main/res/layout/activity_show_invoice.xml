@@ -7,21 +7,6 @@
     tools:context=".ShowInvoiceActivity">
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="415dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="10dp"
-        android:background="#35A4A8"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Invoice"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
         android:id="@+id/tvName"
         android:layout_width="342dp"
         android:layout_height="32dp"
