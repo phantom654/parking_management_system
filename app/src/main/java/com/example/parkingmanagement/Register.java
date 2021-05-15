@@ -129,7 +129,7 @@ public class Register extends AppCompatActivity {
                 try {
 
                     Class.forName("com.mysql.jdbc.Driver");
-                    connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false", "admin", "rajurand");
+                     connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                     statementCheck = connection.createStatement();
                     statementCheck1 = connection.createStatement();
 
@@ -205,8 +205,7 @@ public class Register extends AppCompatActivity {
                     int resultCreateNew;
 
                     try {
-
-                        connection1 = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false", "admin", "rajurand");
+connection1 = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                         statementCreateNew = connection1.createStatement();
                         String queryInsert = String.format("INSERT into users " +
                                         "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');" ,

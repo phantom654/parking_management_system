@@ -63,10 +63,12 @@ public class AddParking extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-
+            String host = "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050";
+            String userName = "sql6412050";
+            String password = "LD4RKuInVq";
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                 Statement statementLogin = connection.createStatement();
 
                 Random rand = new Random();
@@ -77,7 +79,7 @@ public class AddParking extends AppCompatActivity {
                 String rows = etRows.getText().toString();
                 String columns = etColumns.getText().toString();
 
-                String queryAddParking = String.format("INSERT INTO `parking`.`parkingLot` (`parkingId`, `cityName`, `buildingName`, `numberOfRows`, `numberOfColumns`) VALUES ('%s', '%s', '%s', '%s', '%s');", parkingId, cityName, buildingName, rows, columns);
+                String queryAddParking = String.format("INSERT INTO `sql6412050`.`parkingLot` (`parkingId`, `cityName`, `buildingName`, `numberOfRows`, `numberOfColumns`) VALUES ('%s', '%s', '%s', '%s', '%s');", parkingId, cityName, buildingName, rows, columns);
                 statementLogin.executeUpdate(queryAddParking);
 
 

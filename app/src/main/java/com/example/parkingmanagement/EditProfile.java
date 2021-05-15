@@ -103,7 +103,7 @@ public class EditProfile extends AppCompatActivity {
             try {
 
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false","admin","rajurand");
+                connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                 statementGetVal = connection.createStatement();
 
                 String queryGetVal = String.format("select * from users WHERE userId = '%s';", userId);
@@ -203,7 +203,7 @@ public class EditProfile extends AppCompatActivity {
 
                 try {
 
-                    connection1 = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking","admin","rajurand");
+                     connection1 = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                     statementSetVal = connection1.createStatement();
                     String querySetVal = String.format("UPDATE users " +
                                     "set name = '%s', contactNumber = '%s', address = '%s', vehicleId = '%s', email = '%s' " +

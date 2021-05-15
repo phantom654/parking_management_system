@@ -63,10 +63,12 @@ public class AllBookingsActivity extends AppCompatActivity {
         protected ArrayList<Bookings> doInBackground(Void... voids) {
 
             ArrayList<Bookings> bookings=new ArrayList<>();
-
+            String host = "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050";
+            String userName = "sql6412050";
+            String password = "LD4RKuInVq";
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
+                Connection connection = DriverManager.getConnection(host,userName,password);
                 Statement statementLogin = connection.createStatement();
 
 

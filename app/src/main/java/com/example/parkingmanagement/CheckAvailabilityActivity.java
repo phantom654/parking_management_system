@@ -105,7 +105,7 @@ public class CheckAvailabilityActivity extends AppCompatActivity {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                 Statement statementLogin = connection.createStatement();
 
                 String checkAvailability = String.format("select startDateTime,endDateTime,rowId,columnId from reservations where parkingId='%s'", parkingId);

@@ -72,7 +72,7 @@ public class UpdatePassword extends AppCompatActivity {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
 
-                connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false", "admin", "rajurand");
+              connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                 statementGet = connection.createStatement();
 
                 String queryUserExists = String.format("select * from users WHERE userId='%s'", userId);
@@ -172,7 +172,7 @@ public class UpdatePassword extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             try {
-                connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false", "admin", "rajurand");
+          connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
 
                 statementUpdate = connection.createStatement();
 

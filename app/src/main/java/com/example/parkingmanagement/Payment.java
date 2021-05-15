@@ -153,7 +153,7 @@ public class Payment extends Activity implements PaymentResultListener {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking", "admin", "rajurand");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                 Statement statementLogin = connection.createStatement();
 
                 String enterRegistration = String.format("INSERT INTO `reservations` (`parkingId`, `startDateTime`, `endDateTime`, `userId`, `innoiceId`, `rowId`, `columnId`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", parkingId, selectedStartTime, selectedEndTime, userId, paymentId, Integer.toString(finalI), Integer.toString(finalJ) );
@@ -226,7 +226,7 @@ public class Payment extends Activity implements PaymentResultListener {
             try {
 
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection( "jdbc:mysql://parking.cxxwlprzsfrp.us-east-1.rds.amazonaws.com:3306/parking?useSSL=false","admin","rajurand");
+              connection = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6412050","sql6412050","LD4RKuInVq");
                 statementGetVal = connection.createStatement();
 
                 String queryGetVal = String.format("select * from users WHERE userId = '%s';", userId);
