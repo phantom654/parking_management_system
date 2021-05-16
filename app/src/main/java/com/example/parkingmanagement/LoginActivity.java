@@ -46,9 +46,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 String[] params = {etEmail.getText().toString(), etPassword.getText().toString()};
 
-//<<<<<<< HEAD
-                new Login().execute(params);
-//=======
                     if(etEmail.getText().toString().equals("admin"))
                     {
                         if(etPassword.getText().toString().equals("phantom654"))
