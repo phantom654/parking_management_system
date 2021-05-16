@@ -128,8 +128,8 @@ public class ShowInvoiceActivity extends AppCompatActivity {
             }
         });
 
-        tvName.setText("Name\t: " + name);
-        tvEmail.setText("Email\t: " + email);
+        tvName.setText("City\t: " + name);
+        tvEmail.setText("Building\t: " + email);
         tvVehicleId.setText("VehicleId\t: " + vehicleId);
         tvPaymentId.setText("PaymentId\t: " + paymentId);
         tvSlotId.setText("Parking\t: " + parkingId + ", " + slotId);
