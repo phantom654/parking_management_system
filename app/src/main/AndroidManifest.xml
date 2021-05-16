@@ -47,6 +47,7 @@
         <activity android:name=".SelectCityActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".UpdatePassword"/>
         <activity
             android:name=".UserProfile"
             android:label="@string/user_profile" />
