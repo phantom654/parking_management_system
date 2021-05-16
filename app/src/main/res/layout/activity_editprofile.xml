@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/etVehicleId"
-        android:layout_width="308dp"
-        android:layout_height="46dp"
+        android:layout_width="324dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="VehicleId"
@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="318dp"
-        android:layout_height="46dp"
+        android:layout_width="324dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="184dp"
         android:ems="10"
         android:hint="Email"
@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/etContactNum"
-        android:layout_width="313dp"
+        android:layout_width="324dp"
         android:layout_height="49dp"
         android:layout_marginBottom="128dp"
         android:ems="10"
@@ -47,8 +47,8 @@
 
     <EditText
         android:id="@+id/etAddress"
-        android:layout_width="310dp"
-        android:layout_height="51dp"
+        android:layout_width="324dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="72dp"
         android:ems="10"
         android:hint="Address"
@@ -73,8 +73,8 @@
 
     <EditText
         android:id="@+id/etCurrPass"
-        android:layout_width="307dp"
-        android:layout_height="54dp"
+        android:layout_width="324dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Current password"
