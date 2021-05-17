@@ -179,8 +179,13 @@ public class ShowInvoiceActivity extends AppCompatActivity {
 
             addLineSeperator(document);
 
-            addNewItem(document, "User Name:", Element.ALIGN_LEFT, orderNumberFont);
+            addNewItem(document, "City Name:", Element.ALIGN_LEFT, orderNumberFont);
             addNewItem(document, name, Element.ALIGN_LEFT, orderNumberValueFont);
+
+            addLineSeperator(document);
+
+            addNewItem(document, "Building Name:", Element.ALIGN_LEFT, orderNumberFont);
+            addNewItem(document, email, Element.ALIGN_LEFT, orderNumberValueFont);
 
             addLineSeperator(document);
 
