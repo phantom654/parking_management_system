@@ -75,6 +75,8 @@ public class ShowInvoiceActivity extends AppCompatActivity {
         btnGoHome = findViewById(R.id.btnGoHome);
         btnPrint = findViewById(R.id.btnPrint);
 
+        city = name;
+        building = email;
 
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -180,12 +182,12 @@ public class ShowInvoiceActivity extends AppCompatActivity {
             addLineSeperator(document);
 
             addNewItem(document, "City Name:", Element.ALIGN_LEFT, orderNumberFont);
-            addNewItem(document, name, Element.ALIGN_LEFT, orderNumberValueFont);
+            addNewItem(document, city, Element.ALIGN_LEFT, orderNumberValueFont);
 
             addLineSeperator(document);
 
             addNewItem(document, "Building Name:", Element.ALIGN_LEFT, orderNumberFont);
-            addNewItem(document, email, Element.ALIGN_LEFT, orderNumberValueFont);
+            addNewItem(document, building, Element.ALIGN_LEFT, orderNumberValueFont);
 
             addLineSeperator(document);
 
